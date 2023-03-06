@@ -1,51 +1,61 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Secret } from '../../../services/models/secret';
+import { RootState } from '../../store';
 import { createSecret, loadSecret, removeSecret } from './secret-actions';
 
 export interface SecretState {
   creating: boolean;
   loading: boolean;
   removing: boolean;
+  loadingNotValid: boolean;
   secret: Secret | null;
-  createdUuid: string | null;
+  createdSecret: { uuid: string } | null;
 }
 
 const initialState: SecretState = {
   creating: false,
   loading: false,
   removing: false,
+  loadingNotValid: false,
   secret: null,
-  createdUuid: null
+  createdSecret: null
 };
 
 export const secretSlice = createSlice({
   name: 'secret',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCreated: (state) => {
+      state.createdSecret = null;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(loadSecret.pending, (state) => {
       state.loading = true;
+      state.loadingNotValid = false;
       state.secret = null;
     });
     builder.addCase(loadSecret.fulfilled, (state, action) => {
       state.loading = false;
+      state.loadingNotValid = false;
       state.secret = action.payload;
     });
     builder.addCase(loadSecret.rejected, (state) => {
       state.loading = false;
+      state.loadingNotValid = true;
       state.secret = null;
     });
     builder.addCase(createSecret.pending, (state) => {
       state.creating = true;
-      state.createdUuid = null;
+      state.createdSecret = null;
     });
     builder.addCase(createSecret.fulfilled, (state, action) => {
       state.creating = false;
-      state.createdUuid = action.payload;
+      state.createdSecret = action.payload;
     });
     builder.addCase(createSecret.rejected, (state) => {
       state.creating = false;
-      state.createdUuid = null;
+      state.createdSecret = null;
     });
     builder.addCase(removeSecret.pending, (state) => {
       state.removing = true;
@@ -58,3 +68,9 @@ export const secretSlice = createSlice({
     });
   }
 });
+
+export const { resetCreated } = secretSlice.actions;
+
+export const secretSelector = (state: RootState) => state.secret;
+
+export default secretSlice.reducer;

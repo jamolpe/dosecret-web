@@ -1,7 +1,12 @@
 import React from 'react';
+import ViewSecretPage from './view/ViewSecretPage';
 
 const CreatedSecretPage = () => {
-  return <div>CreatedSecretPage</div>;
+  return (
+    <>
+      <ViewSecretPage />
+    </>
+  );
 };
 
 export default CreatedSecretPage;

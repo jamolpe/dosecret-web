@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
 import CreatedSecretPage from '../pages/CreatedSecretPage';
-import CreateSecretPage from '../pages/CreateSecretPage';
-import ViewSecretPage from '../pages/ViewSecretPage';
+import CreateSecretPage from '../pages/create/CreateSecretPage';
+import ViewSecretPage from '../pages/view/ViewSecretPage';
 import { URLS } from '../utils/constants';
 
 const Public = () => {

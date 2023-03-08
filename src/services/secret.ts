@@ -2,7 +2,7 @@ import { Secret } from './models/secret';
 import { handleRequest } from './utils';
 
 export const getSecret = async (uuid: string) => {
-  const response = await fetch(`/secret/${uuid}`, {
+  const response = await fetch(`/api/secret/${uuid}`, {
     method: 'GET'
   });
   return handleRequest(response);
@@ -11,7 +11,7 @@ export const getSecret = async (uuid: string) => {
 export const postSecret = async (
   secretCreate: { session: string | undefined } & Secret
 ) => {
-  const response = await fetch(`/secret`, {
+  const response = await fetch(`/api/secret`, {
     method: 'POST',
     body: JSON.stringify(secretCreate),
     headers: {
@@ -22,7 +22,7 @@ export const postSecret = async (
 };
 
 export const deleteSecret = async (uuid: string) => {
-  const response = await fetch(`/secret/${uuid}`, {
+  const response = await fetch(`/api/secret/${uuid}`, {
     method: 'DELETE'
   });
   return handleRequest(response);

@@ -6,4 +6,5 @@ export interface Secret {
   maxUsages: number;
   uuid?: string;
   usages?: number;
+  admUuid?: string;
 }

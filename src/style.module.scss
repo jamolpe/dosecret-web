@@ -1,0 +1,13 @@
+@import './common.scss';
+
+:export {
+  appFont: $app-font;
+  whiteColor: $white;
+  blackColor: $black-color;
+  textBackground: $text-background;
+  borderColor: $border-color;
+  gradientGreenYellow: $g-green-yellow;
+  redColor: $red-color;
+  gradientRedWhite: $g-red-white;
+  orangeColor: $orange2-color;
+}

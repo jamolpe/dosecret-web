@@ -1,0 +1,18 @@
+// COLORS
+$gray2-color: #c2c2c2;
+$line-gray-color: #9693937a;
+$gray-color: #969393;
+$black-color: #000000cf;
+$white: #ffffff;
+$red-color: #f62424cf;
+$text-background: #e1e1e485;
+$border-color: #c2c2c2;
+$green-color: #469b49bf;
+$yellow-color: #f4ee9c9e;
+$orange-color: #ff7d00e3;
+$orange2-color: #f3bf38db;
+// GRADIENTS
+$g-green-yellow: linear-gradient(90deg, $green-color 0%, $yellow-color 97%);
+$g-red-white: linear-gradient(90deg, $orange-color 0%, $orange2-color 97%);
+
+$app-font: 'Roboto Slab', serif, 'Source Sans Pro', sans-serif;

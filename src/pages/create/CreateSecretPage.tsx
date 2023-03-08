@@ -29,13 +29,13 @@ const CreateSecretPage = () => {
   };
 
   useEffect(() => {
-    if (!creating && createdSecret) resetCreated();
+    dispatch(resetCreated());
   }, []);
 
   useEffect(() => {
-    if (createdSecret)
+    if (!creating && createdSecret)
       navigate(
-        processTemplate(URLS.CREATED_SECRET, { uuid: createdSecret.uuid })
+        processTemplate(URLS.SELECTED_SECRET, { uuid: createdSecret.admUuid })
       );
   }, [createdSecret]);
 

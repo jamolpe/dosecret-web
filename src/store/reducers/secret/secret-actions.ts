@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Secret } from '../../../services/models/secret';
 import { deleteSecret, getSecret, postSecret } from '../../../services/secret';
+import { RootState } from '../../store';
 
 export const loadSecret = createAsyncThunk(
   'secret/loadSecret',
@@ -17,9 +18,13 @@ export const loadSecret = createAsyncThunk(
 
 export const createSecret = createAsyncThunk(
   'secret/createSecret',
-  async (secret: Secret) => {
+  async (secret: Secret, { getState }) => {
     try {
-      const createResponse = await postSecret(secret);
+      const state = <RootState>getState();
+      const createResponse = await postSecret({
+        ...secret,
+        session: state.auth.session
+      });
       return createResponse.body;
     } catch (error) {
       console.log(`error ${error}`);

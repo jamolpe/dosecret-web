@@ -7,16 +7,18 @@ export interface SecretState {
   creating: boolean;
   loading: boolean;
   removing: boolean;
-  loadingNotValid: boolean;
   secret: Secret | null;
-  createdSecret: { uuid: string } | null;
+  createdSecret: {
+    uuid: string;
+    session: string | undefined;
+    admUuid: string;
+  } | null;
 }
 
 const initialState: SecretState = {
   creating: false,
   loading: false,
   removing: false,
-  loadingNotValid: false,
   secret: null,
   createdSecret: null
 };
@@ -32,17 +34,14 @@ export const secretSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(loadSecret.pending, (state) => {
       state.loading = true;
-      state.loadingNotValid = false;
       state.secret = null;
     });
     builder.addCase(loadSecret.fulfilled, (state, action) => {
       state.loading = false;
-      state.loadingNotValid = false;
       state.secret = action.payload;
     });
     builder.addCase(loadSecret.rejected, (state) => {
       state.loading = false;
-      state.loadingNotValid = true;
       state.secret = null;
     });
     builder.addCase(createSecret.pending, (state) => {

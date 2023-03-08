@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import CreatedSecretPage from '../pages/CreatedSecretPage';
 import CreateSecretPage from '../pages/create/CreateSecretPage';
 import ViewSecretPage from '../pages/view/ViewSecretPage';
 import { URLS } from '../utils/constants';
+import NotFound from '../pages/notFound/NotFound';
 
 const Public = () => {
   return (
@@ -18,18 +18,18 @@ const Public = () => {
         }
       />
       <Route
-        path={URLS.CREATED_SECRET}
-        element={
-          <MainLayout>
-            <CreatedSecretPage />
-          </MainLayout>
-        }
-      />
-      <Route
         path={URLS.SELECTED_SECRET}
         element={
           <MainLayout>
             <ViewSecretPage />
+          </MainLayout>
+        }
+      />
+      <Route
+        path={URLS.NOT_FOUND}
+        element={
+          <MainLayout>
+            <NotFound />
           </MainLayout>
         }
       />

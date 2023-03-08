@@ -8,10 +8,12 @@ export const getSecret = async (uuid: string) => {
   return handleRequest(response);
 };
 
-export const postSecret = async (secret: Secret) => {
+export const postSecret = async (
+  secretCreate: { session: string | undefined } & Secret
+) => {
   const response = await fetch(`/secret`, {
     method: 'POST',
-    body: JSON.stringify(secret),
+    body: JSON.stringify(secretCreate),
     headers: {
       'Content-Type': 'application/json'
     }

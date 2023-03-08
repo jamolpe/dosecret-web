@@ -1,21 +1,26 @@
 import { Box, CircularProgress, Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { loadSecret } from '../../store/reducers/secret/secret-actions';
 import { secretSelector } from '../../store/reducers/secret/secret-reducer';
+import { URLS } from '../../utils/constants';
 import NotValid from './NotValid';
 import SecretInfo from './SecretInfo';
 
 const ViewSecretPage = () => {
   const { uuid } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { loading, secret } = useSelector(secretSelector);
 
-  const { loading, secret, loadingNotValid } = useSelector(secretSelector);
   useEffect(() => {
     if (uuid) {
       dispatch(loadSecret(uuid));
+    }
+    if (!uuid) {
+      return navigate(URLS.NOT_FOUND);
     }
   }, []);
 
@@ -37,7 +42,7 @@ const ViewSecretPage = () => {
       );
     }
 
-    if (secret && !loadingNotValid) {
+    if (secret) {
       return <SecretInfo secret={secret} />;
     }
     return <NotValid uuid={uuid} />;

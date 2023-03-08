@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../store/hooks';
 import { loadSecret } from '../../store/reducers/secret/secret-actions';
 import { secretSelector } from '../../store/reducers/secret/secret-reducer';
 import { URLS } from '../../utils/constants';
+import AdminInfo from './AdminInfo';
 import NotValid from './NotValid';
 import SecretInfo from './SecretInfo';
 
@@ -73,6 +74,7 @@ const ViewSecretPage = () => {
             maxWidth: '1000px'
           }}
         >
+          {uuid === secret?.admUuid && <AdminInfo />}
           {getCorrespondingItem()}
         </Box>
       </Grid>

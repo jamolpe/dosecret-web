@@ -35,7 +35,7 @@ const CreateSecretPage = () => {
   useEffect(() => {
     if (!creating && createdSecret)
       navigate(
-        processTemplate(URLS.SELECTED_SECRET, { uuid: createdSecret.admUuid })
+        processTemplate(URLS.SELECTED_SECRET, { uuid: createdSecret.ownerUuid })
       );
   }, [createdSecret]);
 
@@ -56,8 +56,9 @@ const CreateSecretPage = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        id="title"
       >
-        <h1>Generate Secret</h1>
+        <h1>GENERATE SECRET</h1>
       </Grid>
       <Grid
         item
@@ -65,6 +66,7 @@ const CreateSecretPage = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        id="secret"
       >
         <Box style={{ width: '100%', padding: 10, maxWidth: '1000px' }}>
           <TextareaAutosize
@@ -111,6 +113,7 @@ const CreateSecretPage = () => {
         alignItems="center"
         justifyContent="center"
         marginTop={5}
+        id="create"
       >
         <Button
           variant="contained"

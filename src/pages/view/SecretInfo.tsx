@@ -5,10 +5,10 @@ import Section from '../../components/common/Section';
 import Separator from '../../components/common/Separator';
 import { DATE_FORMAT } from '../../utils/dates';
 import style from '../../style.module.scss';
-import { Secret } from '../../services/models/secret';
+import { Secret, SecretOwner } from '../../services/models/secret';
 
 type SecretInfoProps = {
-  secret: Secret;
+  secret: Secret | SecretOwner;
 };
 
 const SecretInfo = ({ secret }: SecretInfoProps) => {

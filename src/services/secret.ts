@@ -1,4 +1,4 @@
-import { Secret } from './models/secret';
+import { Secret, SecretOwner } from './models/secret';
 import { handleRequest } from './utils';
 
 export const getSecret = async (uuid: string) => {

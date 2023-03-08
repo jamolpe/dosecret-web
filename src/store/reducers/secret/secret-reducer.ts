@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Secret } from '../../../services/models/secret';
+import { Secret, SecretOwner } from '../../../services/models/secret';
 import { RootState } from '../../store';
 import { createSecret, loadSecret, removeSecret } from './secret-actions';
 
@@ -7,11 +7,11 @@ export interface SecretState {
   creating: boolean;
   loading: boolean;
   removing: boolean;
-  secret: Secret | null;
+  secret: Secret | SecretOwner | null;
   createdSecret: {
     uuid: string;
     session: string | undefined;
-    admUuid: string;
+    ownerUuid: string;
   } | null;
 }
 

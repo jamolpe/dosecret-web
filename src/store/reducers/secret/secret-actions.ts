@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Secret } from '../../../services/models/secret';
+import { Secret, SecretOwner } from '../../../services/models/secret';
 import { deleteSecret, getSecret, postSecret } from '../../../services/secret';
 import { RootState } from '../../store';
 

@@ -49,16 +49,25 @@ const CreateSecretPage = () => {
     dispatch(createSecret(secret));
   };
   return (
-    <Grid container>
-      <Grid
-        item
-        xs={12}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        id="title"
-      >
-        <h1>GENERATE SECRET</h1>
+    <Grid
+      container
+      rowSpacing={4.5}
+      columnSpacing={2.75}
+      style={{
+        width: '100%',
+        maxWidth: '1000px',
+        padding: 10
+      }}
+    >
+      <Grid item xs={12} id="title">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          style={{ width: '100%' }}
+        >
+          <h1>GENERATE SECRET</h1>
+        </Box>
       </Grid>
       <Grid
         item
@@ -68,7 +77,7 @@ const CreateSecretPage = () => {
         justifyContent="center"
         id="secret"
       >
-        <Box style={{ width: '100%', padding: 10, maxWidth: '1000px' }}>
+        <Box style={{ width: '100%' }}>
           <TextareaAutosize
             aria-label="minimum height"
             minRows={3}

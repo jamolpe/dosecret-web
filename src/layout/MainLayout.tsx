@@ -9,10 +9,23 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <Box sx={{ display: 'flex', width: '100%' }}>
       <Box
         component="main"
-        sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}
+        sx={{
+          width: '100%',
+          flexGrow: 1,
+          p: { xs: 2, sm: 3 }
+        }}
       >
         <Toolbar />
-        {children}
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {children}
+        </Box>
       </Box>
     </Box>
   );

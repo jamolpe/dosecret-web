@@ -13,7 +13,7 @@ type SecretInfoProps = {
 
 const SecretInfo = ({ secret }: SecretInfoProps) => {
   return (
-    <>
+    <Box style={{ width: '100%' }}>
       <TextareaAutosize
         disabled={true}
         aria-label="minimum height"
@@ -52,7 +52,7 @@ const SecretInfo = ({ secret }: SecretInfoProps) => {
           />
         </Box>
       </Section>
-    </>
+    </Box>
   );
 };
 

@@ -51,16 +51,25 @@ const ViewSecretPage = () => {
   };
 
   return (
-    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
-      <Grid
-        item
-        xs={12}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        id="title"
-      >
-        <h1>VIEW SECRET</h1>
+    <Grid
+      container
+      rowSpacing={4.5}
+      columnSpacing={2.75}
+      style={{
+        width: '100%',
+        padding: 10,
+        maxWidth: '1000px'
+      }}
+    >
+      <Grid item xs={12}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          style={{ width: '100%' }}
+        >
+          <h1>VIEW SECRET</h1>
+        </Box>
       </Grid>
       {secret && 'ownerUuid' in secret && secret.ownerUuid === uuid && (
         <Grid
@@ -71,13 +80,7 @@ const ViewSecretPage = () => {
           justifyContent="center"
           id="owner"
         >
-          <Box
-            style={{
-              width: '100%',
-              padding: 10,
-              maxWidth: '1000px'
-            }}
-          >
+          <Box style={{ width: '100%' }}>
             <OwnerInfo secret={secret} />
           </Box>
         </Grid>
@@ -90,15 +93,7 @@ const ViewSecretPage = () => {
         justifyContent="center"
         id="secret"
       >
-        <Box
-          style={{
-            width: '100%',
-            padding: 10,
-            maxWidth: '1000px'
-          }}
-        >
-          {getCorrespondingItem()}
-        </Box>
+        {getCorrespondingItem()}
       </Grid>
       <Grid
         item
@@ -106,6 +101,7 @@ const ViewSecretPage = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        marginTop={5}
         id="createNew"
       >
         <Button
